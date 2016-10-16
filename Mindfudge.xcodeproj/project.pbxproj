@@ -24,6 +24,13 @@
 		CACA37891DB40854005D0119 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37881DB40854005D0119 /* Variable.swift */; };
 		CACA378B1DB4086A005D0119 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA378A1DB4086A005D0119 /* Block.swift */; };
 		CACA378D1DB4087A005D0119 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA378C1DB4087A005D0119 /* Command.swift */; };
+		CACA378F1DB40939005D0119 /* Returnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA378E1DB40939005D0119 /* Returnable.swift */; };
+		CACA37911DB40FDC005D0119 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37901DB40FDC005D0119 /* Value.swift */; };
+		CACA37931DB41761005D0119 /* OptionalParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37921DB41761005D0119 /* OptionalParameter.swift */; };
+		CACA37951DB419EE005D0119 /* Parenthetical.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37941DB419EE005D0119 /* Parenthetical.swift */; };
+		CACA37971DB41AAD005D0119 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37961DB41AAD005D0119 /* Operation.swift */; };
+		CACA37991DB41B99005D0119 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37981DB41B99005D0119 /* Expression.swift */; };
+		CACA379B1DB41D13005D0119 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA379A1DB41D13005D0119 /* Program.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +53,13 @@
 		CACA37881DB40854005D0119 /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		CACA378A1DB4086A005D0119 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		CACA378C1DB4087A005D0119 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		CACA378E1DB40939005D0119 /* Returnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Returnable.swift; sourceTree = "<group>"; };
+		CACA37901DB40FDC005D0119 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		CACA37921DB41761005D0119 /* OptionalParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalParameter.swift; sourceTree = "<group>"; };
+		CACA37941DB419EE005D0119 /* Parenthetical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parenthetical.swift; sourceTree = "<group>"; };
+		CACA37961DB41AAD005D0119 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		CACA37981DB41B99005D0119 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
+		CACA379A1DB41D13005D0119 /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +143,15 @@
 		CACA37871DB40845005D0119 /* Variables */ = {
 			isa = PBXGroup;
 			children = (
+				CACA379A1DB41D13005D0119 /* Program.swift */,
 				CACA378A1DB4086A005D0119 /* Block.swift */,
 				CACA378C1DB4087A005D0119 /* Command.swift */,
+				CACA378E1DB40939005D0119 /* Returnable.swift */,
+				CACA37901DB40FDC005D0119 /* Value.swift */,
+				CACA37921DB41761005D0119 /* OptionalParameter.swift */,
+				CACA37941DB419EE005D0119 /* Parenthetical.swift */,
+				CACA37961DB41AAD005D0119 /* Operation.swift */,
+				CACA37981DB41B99005D0119 /* Expression.swift */,
 			);
 			path = Variables;
 			sourceTree = "<group>";
@@ -210,17 +231,24 @@
 				CA5F0BF41D8CB0CE00285200 /* MindfudgeParser.swift in Sources */,
 				CACA378B1DB4086A005D0119 /* Block.swift in Sources */,
 				CACA37821DB407E7005D0119 /* SyntaxError.swift in Sources */,
+				CACA37911DB40FDC005D0119 /* Value.swift in Sources */,
 				CA423BF61D8B6E1F0058309E /* ViewController.swift in Sources */,
 				CACA37841DB4081C005D0119 /* Node.swift in Sources */,
 				CA423BF41D8B6E1F0058309E /* AppDelegate.swift in Sources */,
 				CA5F0BF21D8CAC0600285200 /* LexicalError.swift in Sources */,
+				CACA37971DB41AAD005D0119 /* Operation.swift in Sources */,
 				CACA378D1DB4087A005D0119 /* Command.swift in Sources */,
 				CACA37891DB40854005D0119 /* Variable.swift in Sources */,
+				CACA379B1DB41D13005D0119 /* Program.swift in Sources */,
+				CACA37951DB419EE005D0119 /* Parenthetical.swift in Sources */,
 				CA423C051D8B6E640058309E /* MindfudgeScanner.swift in Sources */,
 				CA423C091D8B6EA20058309E /* ASCII.swift in Sources */,
+				CACA37931DB41761005D0119 /* OptionalParameter.swift in Sources */,
 				CACA37861DB40830005D0119 /* Terminal.swift in Sources */,
+				CACA378F1DB40939005D0119 /* Returnable.swift in Sources */,
 				CA5F0BF01D8CA93200285200 /* Token.swift in Sources */,
 				CA423C0A1D8B6EA20058309E /* CChar-String.swift in Sources */,
+				CACA37991DB41B99005D0119 /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

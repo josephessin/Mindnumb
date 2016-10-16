@@ -332,7 +332,7 @@ The parser begins with an initial application of the start variable, `<program>`
 		= FIRST(<block>) + FOLLOW(<block>)
 		= {'set', 'left', 'right', 'add', 'sub', 'printA',
            'printI', 'inputA', 'inputI', 'make', 'remove',
-           'jump', 'while', 'if', 'die', <eof>}
+           'jump', 'while', 'if', 'die', <newline>, <eof>}
 	PREDICT(<block> ::= <command> <newline> <block>)
 		= FIRST(<command>) + FOLLOW(<command>)
 		= {'set', 'left', 'right', 'add', 'sub', 'printA',
@@ -376,13 +376,16 @@ The parser begins with an initial application of the start variable, `<program>`
 	PREDICT(<optionalParameter> ::= !)
 		= FOLLOW(<optionalParameter>)
 		= {<newline>}
+	PREDICT(<parenthetical> ::= '(' <expression> ')')
+		= FIRST(<parenthetical>)
+		= '('
 	PREDICT(<operation> ::= '+' <expression>) = {'+'}
 	PREDICT(<operation> ::= !)
 		= FOLLOW(<operation>)
 		= {',', ')'}
 	PREDICT(<expression> ::= <value> <operation>)
 		= FIRST(<value>)
-		= {'get', 'eq', 'gt', 'ge', 'lt', 'le', <integer>, <id>}
+		= {<integer>, <id>}
 	PREDICT(<expression> :: = <parenthetical>)
 		= FIRST(<parenthetical>)
 		= {'('}
