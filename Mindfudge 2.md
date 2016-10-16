@@ -238,7 +238,7 @@ Note that `program` **is our start variable**.
 	          ::= 'right' <optionalParameter>
 	          ::= 'add' <optionalParameter>
 	          ::= 'sub' <optionalParameter>
-	          ::= 'printA' <optionalParameter>
+	          ::= 'printA'
 			  ::= 'printI'
 			  ::= 'inputA'
 			  ::= 'inputI'
@@ -346,7 +346,7 @@ The parser begins with an initial application of the start variable, `<program>`
 	PREDICT(<command> ::= 'right' <optionalParameter>) = {'right'}
 	PREDICT(<command> ::= 'add' <optionalParameter>) = {'add'}
 	PREDICT(<command> ::= 'sub' <optionalParameter>) = {'sub'}
-	PREDICT(<command> ::= 'printA' <optionalParameter>) = {'printA'}
+	PREDICT(<command> ::= 'printA') = {'printA'}
 	PREDICT(<command> ::= 'printI') = {'printI'}
 	PREDICT(<command> ::= 'inputA') = {'inputA'}
 	PREDICT(<command> ::= 'inputI') = {'inputI'}

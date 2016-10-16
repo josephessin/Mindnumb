@@ -41,16 +41,16 @@ class MindfudgeScanner {
         if char == nil { break }
       }
       if let char = char, !isWhitespace(char) { unget() }
-      return Token(type: .newline)
+      return Token.newline
     } else if char! == ASCII.parenthesisOpen {
       // Opening parenthesis
-      return Token(type: .parenthesisOpen)
+      return Token.parenthesisOpen
     } else if char! == ASCII.parenthesisClose {
       // Closing parenthesis
-      return Token(type: .parenthesisClose)
+      return Token.parenthesisClose
     } else if char! == ASCII.comma {
       // Comma
-      return Token(type: .comma)
+      return Token.comma
     } else if isAlpha(char!) {
       // Found an identifier
       var buffer: String = ""
@@ -60,7 +60,7 @@ class MindfudgeScanner {
         if char == nil { break }
       }
       if let char = char, !isWhitespace(char) { unget() }
-      return Token(type: .id, value: buffer)
+      return Token.id(buffer)
     } else if isDigit(char!) || char! == ASCII.minusSign {
       // Found an integer
       var buffer: String = ""
@@ -69,11 +69,11 @@ class MindfudgeScanner {
         // put it in our string...
         buffer += char!.string
         char = get()
-        if char == nil { throw Exception.endOfFile }
+        if char == nil { throw LexicalError.endOfFile }
       }
       if !isDigit(char!) {
         // Found a non digit when we expected a digit.
-        throw Exception.invalidCharacter
+        throw LexicalError.invalidCharacter(char!.string)
       }
       while isDigit(char!) {
         buffer += char!.string
@@ -81,14 +81,10 @@ class MindfudgeScanner {
         if char == nil { break }
       }
       if !isWhitespace(char!) { unget() }
-      if let integer = Int(buffer) {
-        return Token(type: .integer, value: integer)
-      } else {
-        throw Exception.invalidInteger
-      }
+      return Token.integer(buffer)
     } else if char! == ASCII.plusSign {
       // Found the plus operator
-      return Token(type: .plus, value: char!.string)
+      return Token.op("+")
     } else if char! == ASCII.hashtag {
       // Found a comment:
       var buffer: String = ""
@@ -98,16 +94,14 @@ class MindfudgeScanner {
         char = get()
         if char == nil { break }
       }
-      return Token(type: .comment, value: buffer)
+      return Token.comment(buffer)
     } else {
       if char! != 0 {
-        // Invalid character found!
-        NSLog("Invalid character at index: " + String(position))
-        NSLog("Found: " + char!.string)
-        throw Exception.invalidCharacter
+        // Invalid character found, throw a fit.
+        throw LexicalError.invalidCharacter(char!.string)
       } else {
         // Create an end of file token.
-        return Token(type: .eof)
+        return Token.eof
       }
     }
   }

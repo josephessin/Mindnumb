@@ -22,13 +22,7 @@ class ViewController: NSViewController {
       // Attempt to parse the mindfudge code.
       let parser = try MindfudgeParser(code: string)
       NSLog("Tokens: ")
-      for token in parser.tokens {
-        if token.description != "" {
-          print(token.type.description + " = '" + token.description + "'")
-        } else {
-          print(token.type.description)
-        }
-      }
+      print(parser.tokens.description)
       
     } catch let exception {
       NSLog("Error: " + String(describing: exception))

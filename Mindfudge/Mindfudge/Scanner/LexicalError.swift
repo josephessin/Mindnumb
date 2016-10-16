@@ -1,5 +1,5 @@
 //
-//  MindfudgeScanner-Error.swift
+//  LexicalError.swift
 //  Mindfudge
 //
 //  Created by Joseph Essin on 9/16/16.
@@ -7,14 +7,11 @@
 //
 
 import Foundation
-
-extension MindfudgeScanner {
   
   /// Failable errors thrown by the scanner.
-  enum Exception : Error, CustomStringConvertible {
+  enum LexicalError : Error, CustomStringConvertible {
     case endOfFile
-    case invalidInteger
-    case invalidCharacter
+    case invalidCharacter(String)
     
     // MARK: CustomStringConvertible
     
@@ -23,13 +20,9 @@ extension MindfudgeScanner {
       case .endOfFile:
         return "The end of the file was encountered unexepectedly " +
         "while scanning."
-      case .invalidInteger:
-        return "Couldn't convert the token string to an integer value."
-      case .invalidCharacter:
-        return "Invalid character found while scanning token."
+      case let .invalidCharacter(str):
+        return "Invalid character found while scanning token: " + str
       }
     }
     
   }
-  
-}

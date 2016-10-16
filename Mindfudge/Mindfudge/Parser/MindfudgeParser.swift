@@ -11,7 +11,7 @@ import Foundation
 class MindfudgeParser {
   
   /// An array of tokens.
-  private(set) var tokens: [MindfudgeScanner.Token] = []
+  private(set) var tokens: [Token] = []
   
   /// Creates a new parser for the specified Mindfudge code.
   init(code: String) throws {
@@ -19,8 +19,12 @@ class MindfudgeParser {
     do {
       // Construct an array of tokens for grammatical analysis
       while let token = try scanner.nextToken() {
-        //NSLog("Token: " + token.description)
-        if token.type != .comment { tokens += [token] }
+        switch token {
+        case .comment:
+          break
+        default:
+          tokens += [token]
+        }
       }
     } catch let exception {
       // Throw any problems up the call stack.
