@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+/// Represents an error encountered while creating the abstract syntax tree.
+enum SyntaxError: Error {
+  /// An invalid token was encountered.
+  case invalidToken(found: Token)
+}

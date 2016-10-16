@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class Terminal: Node {
+  
+  /// The token representing the terminal node's value.
+  fileprivate(set) var token: Token
+  
+  /// Creates a new terminal node with the specified token value.
+  init(token: Token) {
+    self.token = token
+  }
+}
