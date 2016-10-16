@@ -17,4 +17,8 @@ class Terminal: Node {
   init(token: Token) {
     self.token = token
   }
+  
+  override var description: String {
+    return token.description
+  }
 }

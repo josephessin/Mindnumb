@@ -11,6 +11,10 @@ import Foundation
 /// Represents the <command> variable in the CFG for Mindfudge.
 class Command: Node, Variable {
   
+  override var description: String {
+    return "Command"
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case let .id(string) where string == "set":
@@ -89,7 +93,7 @@ class Command: Node, Variable {
   private func rule10() {
     children += [Terminal(token: .id("make")),
                  Terminal(token: .parenthesisOpen),
-                 Terminal(token: .id),
+                 Identifier(),
                  Terminal(token: .comma),
                  Expression(),
                  Terminal(token: .parenthesisClose)]

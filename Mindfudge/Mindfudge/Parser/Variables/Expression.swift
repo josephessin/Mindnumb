@@ -10,6 +10,10 @@ import Foundation
 
 class Expression: Node, Variable {
   
+  override var description: String {
+    return "Expression"
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case .integer, .id:

@@ -10,6 +10,10 @@ import Foundation
 
 class Operation: Node, Variable {
   
+  override var description: String {
+    return "Operation"
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case let .op(str) where str == "+":

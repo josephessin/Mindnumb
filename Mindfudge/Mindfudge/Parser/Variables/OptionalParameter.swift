@@ -10,6 +10,10 @@ import Foundation
 
 class OptionalParameter: Node, Variable {
   
+  override var description: String {
+    return "OptionalParameter"
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case .parenthesisOpen:

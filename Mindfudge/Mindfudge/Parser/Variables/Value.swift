@@ -10,6 +10,10 @@ import Foundation
 
 class Value: Node, Variable {
   
+  override var description: String {
+    return "Value"
+  }
+  
   private static let firstOfReturnable = ["get", "eq", "gt", "ge", "lt", "le"]
   
   func loadChildren(fromLookAhead token: Token) throws {

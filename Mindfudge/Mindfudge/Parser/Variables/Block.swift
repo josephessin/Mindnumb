@@ -10,6 +10,11 @@ import Foundation
 
 /// Represents the <block> variable in the CFG for Mindfudge.
 class Block: Node, Variable {
+  
+  override var description: String {
+    return "Block"
+  }
+  
   /// Represents identifiers used in the predict rules.
   private static let ids = ["set", "left", "right", "add", "sub", "printA",
                             "printI", "inputA", "inputI", "make", "remove",
@@ -22,6 +27,10 @@ class Block: Node, Variable {
     case let .id(string) where Block.ids.contains(string):
       rule1()
     case .eof:
+      rule2()
+    case let .id(string) where string == "end":
+      // Block goes to nil if we see the follow of block,
+      // which also contains "end"
       rule2()
     default:
       throw

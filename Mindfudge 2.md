@@ -314,7 +314,7 @@ terminal is equal to the terminal itself.
 
 ### FOLLOW Table
 
-	FOLLOW(<block>) = {<eof>}
+	FOLLOW(<block>) = {<eof>, 'end'}
 	FOLLOW(<command>) = {<newline>}
 	FOLLOW(<optionalParameter>)
 		= FOLLOW(<command>)
@@ -332,7 +332,7 @@ The parser begins with an initial application of the start variable, `<program>`
 		= FIRST(<block>) + FOLLOW(<block>)
 		= {'set', 'left', 'right', 'add', 'sub', 'printA',
            'printI', 'inputA', 'inputI', 'make', 'remove',
-           'jump', 'while', 'if', 'die', <newline>, <eof>}
+           'jump', 'while', 'if', 'die', 'end', <newline>, <eof>}
 	PREDICT(<block> ::= <command> <newline> <block>)
 		= FIRST(<command>) + FOLLOW(<command>)
 		= {'set', 'left', 'right', 'add', 'sub', 'printA',
@@ -340,7 +340,7 @@ The parser begins with an initial application of the start variable, `<program>`
            'jump', 'while', 'if', 'die', <newline>}
 	PREDICT(<block> ::= !}
 		= FOLLOW(<block>)
-		= {<eof>}
+		= {<eof>, 'end'}
 	PREDICT(<command> ::= 'set' '(' <expression> ')') = {'set'}
 	PREDICT(<command> ::= 'left' <optionalParameter>) = {'left'}
 	PREDICT(<command> ::= 'right' <optionalParameter>) = {'right'}

@@ -10,6 +10,10 @@ import Foundation
 
 class Program: Node, Variable {
   
+  override var description: String {
+    return "Program"
+  }
+  
   private static let ids = ["set", "left", "right", "add", "sub", "printA",
                             "printI", "inputA", "inputI", "make", "remove",
                             "jump", "while", "if", "die"]

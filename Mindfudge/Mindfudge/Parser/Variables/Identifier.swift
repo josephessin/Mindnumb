@@ -1,5 +1,5 @@
 //
-//  Parenthetical.swift
+//  Identifier.swift
 //  Mindfudge
 //
 //  Created by Joseph Essin on 10/16/16.
@@ -8,26 +8,24 @@
 
 import Foundation
 
-class Parenthetical: Node, Variable {
+class Identifier: Node, Variable {
   
   override var description: String {
-    return "Parenthetical"
+    return "Identifier"
   }
   
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
-    case .parenthesisOpen:
-      rule1()
+    case .id:
+      rule1(id: token)
     default:
       throw SyntaxError.invalidToken(found: token)
     }
   }
   
-  /// <parenthetical> ::= '(' <expression> ')'
-  private func rule1() {
-    children += [Terminal(token: .parenthesisOpen),
-                 Expression(),
-                 Terminal(token: .parenthesisClose)]
+  /// <identifier> ::= ('A'-'Z' | 'a'-'z') ('A'-'Z' | 'a'-'z' | '0'-'9')*
+  private func rule1(id: Token) {
+    children += [Terminal(token: id)]
   }
   
 }

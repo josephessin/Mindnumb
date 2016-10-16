@@ -17,15 +17,16 @@ class ViewController: NSViewController {
     let path = Bundle.main.path(forResource: "code", ofType: "txt")!
     let string = try! String(contentsOfFile: path)
     
+    let parser = MindfudgeParser(code: string)
     do {
-      
       // Attempt to parse the mindfudge code.
-      let parser = try MindfudgeParser(code: string)
-      NSLog("Tokens: ")
+      try parser.parse()
+      Swift.print("Tokens: ")
       print(parser.tokens.description)
-      
+      parser.ast?.print()
+      print("SUCCESSFUL PARSE")
     } catch let exception {
-      NSLog("Error: " + String(describing: exception))
+      Swift.print("Error: " + String(describing: exception))
     }
   }
 }

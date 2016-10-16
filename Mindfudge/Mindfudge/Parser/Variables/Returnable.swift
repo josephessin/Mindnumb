@@ -10,6 +10,10 @@ import Foundation
 
 class Returnable: Node, Variable {
   
+  override var description: String {
+    return "Returnable"
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case let .id(string) where string == "get":
@@ -18,7 +22,8 @@ class Returnable: Node, Variable {
       string == "eq" || string == "gt" || string == "ge" || string == "lt"
       || string == "le":
       ruleBuiltInFunction(id: string)
-      
+    default:
+      throw SyntaxError.invalidToken(found: token)
     }
   }
   
