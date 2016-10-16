@@ -49,6 +49,7 @@
 		CA5F0BF11D8CAC0600285200 /* LexicalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LexicalError.swift; sourceTree = "<group>"; };
 		CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfudgeParser.swift; sourceTree = "<group>"; };
 		CA5F0BF51D8CB24700285200 /* code.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code.txt; sourceTree = "<group>"; };
+		CA89B35F1DB43CE9000F3B6A /* Mindfudge README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Mindfudge README.md"; sourceTree = SOURCE_ROOT; };
 		CACA37811DB407E7005D0119 /* SyntaxError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxError.swift; sourceTree = "<group>"; };
 		CACA37831DB4081C005D0119 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CACA37851DB40830005D0119 /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		CA423BF21D8B6E1F0058309E /* Mindfudge */ = {
 			isa = PBXGroup;
 			children = (
+				CA89B35F1DB43CE9000F3B6A /* Mindfudge README.md */,
 				CA423C061D8B6EA20058309E /* Utility */,
 				CA423C021D8B6E4A0058309E /* Parser */,
 				CA423C031D8B6E4A0058309E /* Scanner */,
