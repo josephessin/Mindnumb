@@ -14,6 +14,15 @@
 		CA423C051D8B6E640058309E /* MindfudgeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA423C041D8B6E640058309E /* MindfudgeScanner.swift */; };
 		CA423C091D8B6EA20058309E /* ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA423C071D8B6EA20058309E /* ASCII.swift */; };
 		CA423C0A1D8B6EA20058309E /* CChar-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA423C081D8B6EA20058309E /* CChar-String.swift */; };
+		CA5F0BEE1D8CA92000285200 /* MindfudgeScanner-Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BED1D8CA92000285200 /* MindfudgeScanner-Token.swift */; };
+		CA5F0BF01D8CA93200285200 /* MindfudgeScanner-TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BEF1D8CA93200285200 /* MindfudgeScanner-TokenType.swift */; };
+		CA5F0BF21D8CAC0600285200 /* MindfudgeScanner-Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BF11D8CAC0600285200 /* MindfudgeScanner-Exception.swift */; };
+		CA5F0BF41D8CB0CE00285200 /* MindfudgeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */; };
+		CA5F0BF61D8CB24700285200 /* code.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5F0BF51D8CB24700285200 /* code.txt */; };
+		CA808C421DB3227F008AA180 /* MindfudgeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA808C411DB3227F008AA180 /* MindfudgeNode.swift */; };
+		CA808C441DB32480008AA180 /* MindfudgeParser-TerminalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA808C431DB32480008AA180 /* MindfudgeParser-TerminalNode.swift */; };
+		CA808C461DB324A7008AA180 /* MindfudgeParser-VariableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA808C451DB324A7008AA180 /* MindfudgeParser-VariableNode.swift */; };
+		CA808C481DB32560008AA180 /* MindfudgeParser-Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA808C471DB32560008AA180 /* MindfudgeParser-Rule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		CA423C041D8B6E640058309E /* MindfudgeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfudgeScanner.swift; sourceTree = "<group>"; };
 		CA423C071D8B6EA20058309E /* ASCII.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCII.swift; sourceTree = "<group>"; };
 		CA423C081D8B6EA20058309E /* CChar-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CChar-String.swift"; sourceTree = "<group>"; };
+		CA5F0BED1D8CA92000285200 /* MindfudgeScanner-Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MindfudgeScanner-Token.swift"; sourceTree = "<group>"; };
+		CA5F0BEF1D8CA93200285200 /* MindfudgeScanner-TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MindfudgeScanner-TokenType.swift"; sourceTree = "<group>"; };
+		CA5F0BF11D8CAC0600285200 /* MindfudgeScanner-Exception.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MindfudgeScanner-Exception.swift"; sourceTree = "<group>"; };
+		CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfudgeParser.swift; sourceTree = "<group>"; };
+		CA5F0BF51D8CB24700285200 /* code.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code.txt; sourceTree = "<group>"; };
+		CA808C411DB3227F008AA180 /* MindfudgeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfudgeNode.swift; sourceTree = "<group>"; };
+		CA808C431DB32480008AA180 /* MindfudgeParser-TerminalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MindfudgeParser-TerminalNode.swift"; sourceTree = "<group>"; };
+		CA808C451DB324A7008AA180 /* MindfudgeParser-VariableNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MindfudgeParser-VariableNode.swift"; sourceTree = "<group>"; };
+		CA808C471DB32560008AA180 /* MindfudgeParser-Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MindfudgeParser-Rule.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +84,7 @@
 				CA423BF71D8B6E1F0058309E /* Assets.xcassets */,
 				CA423BF91D8B6E1F0058309E /* Main.storyboard */,
 				CA423BFC1D8B6E1F0058309E /* Info.plist */,
+				CA5F0BF51D8CB24700285200 /* code.txt */,
 			);
 			path = Mindfudge;
 			sourceTree = "<group>";
@@ -73,6 +92,11 @@
 		CA423C021D8B6E4A0058309E /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */,
+				CA808C411DB3227F008AA180 /* MindfudgeNode.swift */,
+				CA808C431DB32480008AA180 /* MindfudgeParser-TerminalNode.swift */,
+				CA808C451DB324A7008AA180 /* MindfudgeParser-VariableNode.swift */,
+				CA808C471DB32560008AA180 /* MindfudgeParser-Rule.swift */,
 			);
 			name = Parser;
 			path = Mindfudge/Parser;
@@ -82,6 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				CA423C041D8B6E640058309E /* MindfudgeScanner.swift */,
+				CA5F0BED1D8CA92000285200 /* MindfudgeScanner-Token.swift */,
+				CA5F0BEF1D8CA93200285200 /* MindfudgeScanner-TokenType.swift */,
+				CA5F0BF11D8CAC0600285200 /* MindfudgeScanner-Exception.swift */,
 			);
 			name = Scanner;
 			path = Mindfudge/Scanner;
@@ -157,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA423BF81D8B6E1F0058309E /* Assets.xcassets in Resources */,
+				CA5F0BF61D8CB24700285200 /* code.txt in Resources */,
 				CA423BFB1D8B6E1F0058309E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,10 +196,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA808C441DB32480008AA180 /* MindfudgeParser-TerminalNode.swift in Sources */,
+				CA5F0BEE1D8CA92000285200 /* MindfudgeScanner-Token.swift in Sources */,
+				CA5F0BF41D8CB0CE00285200 /* MindfudgeParser.swift in Sources */,
 				CA423BF61D8B6E1F0058309E /* ViewController.swift in Sources */,
 				CA423BF41D8B6E1F0058309E /* AppDelegate.swift in Sources */,
+				CA5F0BF21D8CAC0600285200 /* MindfudgeScanner-Exception.swift in Sources */,
+				CA808C421DB3227F008AA180 /* MindfudgeNode.swift in Sources */,
 				CA423C051D8B6E640058309E /* MindfudgeScanner.swift in Sources */,
 				CA423C091D8B6EA20058309E /* ASCII.swift in Sources */,
+				CA5F0BF01D8CA93200285200 /* MindfudgeScanner-TokenType.swift in Sources */,
+				CA808C461DB324A7008AA180 /* MindfudgeParser-VariableNode.swift in Sources */,
+				CA808C481DB32560008AA180 /* MindfudgeParser-Rule.swift in Sources */,
 				CA423C0A1D8B6EA20058309E /* CChar-String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +361,7 @@
 				CA423C011D8B6E1F0058309E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

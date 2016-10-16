@@ -10,6 +10,12 @@ import Foundation
 
 /// Stores ASCII codes, for your convenience.
 struct ASCII {
+  /// ASCII code for (
+  static let parenthesisOpen: CChar = 40
+  /// ASCII code for )
+  static let parenthesisClose: CChar = 41
+  /// ASCII code for ,
+  static let comma: CChar = 44
   /// ASCII code for {
   static let curlyBraceOpen: CChar = 123
   /// ASCII code for }
@@ -44,6 +50,8 @@ struct ASCII {
   static let semicolon: CChar = 59
   /// ASCII code for -
   static let minusSign: CChar = 45
+  /// ASCII code for +
+  static let plusSign: CChar = 43
   /// ASCII code for -, same as minuSign.
   static let hyphen: CChar = 45
   /// ASCII code for f
@@ -56,4 +64,6 @@ struct ASCII {
   static let tilde: CChar = 126
   /// ASCII code for _
   static let underscore: CChar = 95
+  /// ASCII code for #
+  static let hashtag: CChar = 35
 }
