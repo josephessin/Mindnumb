@@ -18,6 +18,8 @@
 		CA5F0BF21D8CAC0600285200 /* LexicalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BF11D8CAC0600285200 /* LexicalError.swift */; };
 		CA5F0BF41D8CB0CE00285200 /* MindfudgeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */; };
 		CA5F0BF61D8CB24700285200 /* code.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5F0BF51D8CB24700285200 /* code.txt */; };
+		CABD4A661DBEADF100D63365 /* CodeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD4A651DBEADF100D63365 /* CodeContainer.swift */; };
+		CABD4A681DBF238A00D63365 /* code2.txt in Resources */ = {isa = PBXBuildFile; fileRef = CABD4A671DBF238A00D63365 /* code2.txt */; };
 		CACA37821DB407E7005D0119 /* SyntaxError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37811DB407E7005D0119 /* SyntaxError.swift */; };
 		CACA37841DB4081C005D0119 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37831DB4081C005D0119 /* Node.swift */; };
 		CACA37861DB40830005D0119 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37851DB40830005D0119 /* Terminal.swift */; };
@@ -50,6 +52,8 @@
 		CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfudgeParser.swift; sourceTree = "<group>"; };
 		CA5F0BF51D8CB24700285200 /* code.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code.txt; sourceTree = "<group>"; };
 		CA89B35F1DB43CE9000F3B6A /* Mindfudge README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Mindfudge README.md"; sourceTree = SOURCE_ROOT; };
+		CABD4A651DBEADF100D63365 /* CodeContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeContainer.swift; sourceTree = "<group>"; };
+		CABD4A671DBF238A00D63365 /* code2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code2.txt; sourceTree = "<group>"; };
 		CACA37811DB407E7005D0119 /* SyntaxError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxError.swift; sourceTree = "<group>"; };
 		CACA37831DB4081C005D0119 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CACA37851DB40830005D0119 /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				CA423BF91D8B6E1F0058309E /* Main.storyboard */,
 				CA423BFC1D8B6E1F0058309E /* Info.plist */,
 				CA5F0BF51D8CB24700285200 /* code.txt */,
+				CABD4A671DBF238A00D63365 /* code2.txt */,
 			);
 			path = Mindfudge;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				CACA37851DB40830005D0119 /* Terminal.swift */,
 				CACA37881DB40854005D0119 /* Variable.swift */,
 				CACA379C1DB41E1C005D0119 /* AbstractSyntaxTree.swift */,
+				CABD4A651DBEADF100D63365 /* CodeContainer.swift */,
 			);
 			name = Parser;
 			path = Mindfudge/Parser;
@@ -223,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CABD4A681DBF238A00D63365 /* code2.txt in Resources */,
 				CA423BF81D8B6E1F0058309E /* Assets.xcassets in Resources */,
 				CA5F0BF61D8CB24700285200 /* code.txt in Resources */,
 				CA423BFB1D8B6E1F0058309E /* Main.storyboard in Resources */,
@@ -248,6 +255,7 @@
 				CACA37971DB41AAD005D0119 /* Operation.swift in Sources */,
 				CACA378D1DB4087A005D0119 /* Command.swift in Sources */,
 				CACA37891DB40854005D0119 /* Variable.swift in Sources */,
+				CABD4A661DBEADF100D63365 /* CodeContainer.swift in Sources */,
 				CACA379B1DB41D13005D0119 /* Program.swift in Sources */,
 				CACA37951DB419EE005D0119 /* Parenthetical.swift in Sources */,
 				CA423C051D8B6E640058309E /* MindfudgeScanner.swift in Sources */,

@@ -25,6 +25,11 @@ class ViewController: NSViewController {
       print(parser.tokens.description)
       parser.ast?.print()
       print("SUCCESSFUL PARSE")
+      
+      if let code = parser.ast?.code() {
+        print(code)
+        print("SUCCESSFUL COMPILATION")
+      }
     } catch let exception {
       Swift.print("Error: " + String(describing: exception))
     }

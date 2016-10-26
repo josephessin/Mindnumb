@@ -14,6 +14,30 @@ class Expression: Node, Variable {
     return "Expression"
   }
   
+  override func value(code: CodeContainer) -> String {
+    guard children.count > 0 else { return "" }
+    
+    if children.count == 1 {
+      // Dealing with a parenthetical, return it up the chain to be
+      // used by something that performs some sort of operation or
+      // calculation.
+      return children[0].value(code: code)
+    } else {
+      // Dealing with a value + expression. The (+ expression) part may not
+      // even exist, so we might just need to bubble a value up.
+      let value = children[0].value(code: code)
+      let opValue = children[1].value(code: code)
+      if opValue != "" {
+        let v = code.pushVar()
+        code.append(v + " = " + value + " + " + opValue)
+        code.popVar()
+        return v
+      } else {
+        return value
+      }
+    }
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case .integer, .id:

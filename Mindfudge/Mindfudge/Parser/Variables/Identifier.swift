@@ -14,6 +14,10 @@ class Identifier: Node, Variable {
     return "Identifier"
   }
   
+  override func value(code: CodeContainer) -> String {
+    return children[0].value(code: code)
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case .id:

@@ -1,0 +1,21 @@
+# Input a sequence of a's and b's from the user (for the sake of palindromes!)
+# Joseph Essin
+# October 2016
+inputA
+while( or(eq(97, indexValue), eq(98, indexValue)))
+# While the user has inputted a or b.
+# Note that 'a' = 61 and 'b' = 62. The above comparison works because
+# eq(exp, exp) always returns 1 if true, 0 if false.
+  right
+  inputA
+end
+
+
+# Go all the way back to the start:
+jump(0)
+
+# Print out the sequence of 'a' and 'b' characters entered by the user
+while( or(eq(1, eq(97, indexValue)), eq(1, eq(98, indexValue))) )
+  printA
+  right
+end

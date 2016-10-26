@@ -47,6 +47,13 @@ class AbstractSyntaxTree {
     recursivePrint(node: root, string: "--")
   }
   
+  /// Compiles python code for the syntax tree.
+  func code() -> String {
+    let code = CodeContainer()
+    _ = root.value(code: code)
+    return code.code
+  }
+  
   private func recursivePrint(node: Node, string: String) {
    // let head = "|" + String(repeating: "-", count: level * 2)
     let head = string + "*"

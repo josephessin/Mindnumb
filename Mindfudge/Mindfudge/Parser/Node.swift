@@ -13,9 +13,23 @@ import Foundation
 /// or a node class that implements loadChildren.
 class Node: CustomStringConvertible {
   
+  /// The variables (registers) used in code generation.
+  static var variables: Int = 0
+  
   /// The node's children.
   /// The left-most node is considered to be the first element, [0].
   var children: [Node] = []
   
+  /// Represents the code for this element.
+  func value(code: CodeContainer) -> String {
+    return "node value"
+  }
+  
   var description: String { return "Node" }
+  
+  /// Returns the number of spaces specified to make code generation that
+  /// much easier.
+  private func spaces(_ level: Int) -> String {
+    return String(repeating: " ", count: level * 4)
+  }
 }

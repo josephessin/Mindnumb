@@ -14,7 +14,12 @@ class Value: Node, Variable {
     return "Value"
   }
   
-  private static let firstOfReturnable = ["get", "eq", "gt", "ge", "lt", "le"]
+  private static let firstOfReturnable = ["get", "not", "eq", "or", "gt", "ge",
+                                          "lt", "le"]
+  
+  override func value(code: CodeContainer) -> String {
+    return children[0].value(code: code)
+  }
   
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {

@@ -11,9 +11,22 @@ import Foundation
 /// Represents the <block> variable in the CFG for Mindfudge.
 class Block: Node, Variable {
   
+  var endOfBlock: Bool = false
+  
   override var description: String {
     return "Block"
   }
+  
+  override func value(code: CodeContainer) -> String {
+    if children.count == 0 {
+      ///if endOfBlock { code.unindent() }
+    } else {
+      _ = children[0].value(code: code)
+      _ = children[2].value(code: code)
+    }
+    return ""
+  }
+  
   
   /// Represents identifiers used in the predict rules.
   private static let ids = ["set", "left", "right", "add", "sub", "printA",
@@ -32,6 +45,7 @@ class Block: Node, Variable {
       // Block goes to nil if we see the follow of block,
       // which also contains "end"
       rule2()
+      endOfBlock = true
     default:
       throw
         SyntaxError.invalidToken(found: token)

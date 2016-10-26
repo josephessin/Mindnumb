@@ -14,6 +14,13 @@ class Operation: Node, Variable {
     return "Operation"
   }
   
+  override func value(code: CodeContainer) -> String {
+    if children.count > 1 {
+      return children[1].value(code: code)
+    }
+    return ""
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case let .op(str) where str == "+":

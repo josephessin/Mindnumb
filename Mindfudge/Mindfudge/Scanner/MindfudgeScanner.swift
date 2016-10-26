@@ -94,6 +94,7 @@ class MindfudgeScanner {
         char = get()
         if char == nil { break }
       }
+
       return Token.comment(buffer)
     } else {
       if char! != 0 {

@@ -232,23 +232,23 @@ Note that `program` **is our start variable**.
 
     <program> ::= <block> <EOF>
     <block>   ::= <command> <newline> <block>
-    		  ::= !
+    		      ::= !
     <command> ::= 'set' '(' <expression> ')'
-    		  ::= 'left' <optionalParameter>
-	          ::= 'right' <optionalParameter>
-	          ::= 'add' <optionalParameter>
-	          ::= 'sub' <optionalParameter>
-	          ::= 'printA'
-			  ::= 'printI'
-			  ::= 'inputA'
-			  ::= 'inputI'
-	          ::= 'make' '(' <id> ',' <expression> ')'
-	          ::= 'remove' '(' <id> ')'
-	          ::= 'jump' <parenthetical>
-	          ::= 'while' <parenthetical> <newline> <block> <end>
-	          ::= 'if' <parenthetical> <newline> <block> <end>
-	          ::= 'die'
-	          ::= !
+              ::= 'left' <optionalParameter>
+              ::= 'right' <optionalParameter>
+              ::= 'add' <optionalParameter>
+              ::= 'sub' <optionalParameter>
+              ::= 'printA'
+              ::= 'printI'
+              ::= 'inputA'
+              ::= 'inputI'
+              ::= 'make' '(' <id> ',' <expression> ')'
+              ::= 'remove' '(' <id> ')'
+              ::= 'jump' <parenthetical>
+              ::= 'while' <parenthetical> <newline> <block> <end>
+              ::= 'if' <parenthetical> <newline> <block> <end>
+              ::= 'die'
+              ::= !
 	          
 ### Expressions
 
@@ -264,12 +264,12 @@ Note that `program` **is our start variable**.
 	        ::= <id>
 	        
 	<optionalParameter> ::= <parenthetical>
-						::= !
+                      ::= !
 	
 	<parenthetical> ::= '(' <expression> ')'	
 	
 	<operation> ::= '+' <expression>
-			    ::= !
+              ::= !
 
 	<expression> ::= <value> <operation>
 	             ::= <parenthetical>
@@ -295,8 +295,8 @@ terminal is equal to the terminal itself.
 		   'printI', 'inputA', 'inputI', 'make', 'remove',
 		   'jump', 'while', 'if', 'die', <newline>}
 	FIRST(<command>) = {'set', 'left', 'right', 'add', 'sub', 'printA',
-					   'printI', 'inputA', 'inputI', 'make', 'remove',
-					   'jump', 'while', 'if', 'die'}
+					           'printI', 'inputA', 'inputI', 'make', 'remove',
+                     'jump', 'while', 'if', 'die'}
 	FIRST(<returnable>) = {'get', 'eq', 'gt', 'ge', 'lt', 'le'}
 	FIRST(<value>)
 		= FIRST(<returnable>) + {<integer>, <id>}
@@ -337,7 +337,7 @@ The parser begins with an initial application of the start variable, `<program>`
 		= FIRST(<command>) + FOLLOW(<command>)
 		= {'set', 'left', 'right', 'add', 'sub', 'printA',
            'printI', 'inputA', 'inputI', 'make', 'remove',
-           'jump', 'while', 'if', 'die', <newline>}
+           'jump', 'while', 'if', 'die' <newline>}
 	PREDICT(<block> ::= !}
 		= FOLLOW(<block>)
 		= {<eof>, 'end'}
@@ -389,6 +389,26 @@ The parser begins with an initial application of the start variable, `<program>`
 	PREDICT(<expression> :: = <parenthetical>)
 		= FIRST(<parenthetical>)
 		= {'('}
+		
+## Symbol Table
+
+* Generate symbol list while constructing a tree.
+* Keep track of integers and id's.
+* Allocate space in an array
+* Update symbol table with location
+
+Symbol table should track:
+Location in 30,000 slots
+Size
+Determine where the variable should live in memory
+Allocate data
+Linked list of free space
+
+Make the python code generate a symbol table.
+
+
+<returnable> can generate any number of statements as needed to make the
+variables equal what they want
 
 ## Usage Notes
 Meaning of operations:
@@ -411,25 +431,3 @@ built in functions that return zero or one, allowing them to be
 used in expressions. It also adds support for *less-than* (`lt()`)
 and *less-than-or-equal-to* (`le()`), which was not possible in the original
 Mindfudge specification.
-
-Example of using the `get` to dereference memory locations:
-
-	# We begin at slot 0 in memory.
-	# All memory locations are guaranteed to be 0 until modified.
-	#
-	right 5        # Go to slot 5 in memory
-	set -1         # Set the value of slot 5 to be -1
-	left 5         # Go back to slot 0.
-	right 10       # Go to slot 10 in memory
-	set 5          # Set the value of slot 10 to be 5
-	make array1 10  # Create an array from slot 10 to 19 (inclusive)
-	left 10        # Go back to slot 0 in memory
-    set get(get(get(array1)))
-    # Note:
-    # get(array1) = 10
-    #   The address (starting location) of array1.
-    # get(get(array1)) = 5
-    #   The value of the first item in array1.
-    # get(get(get(array1))) = -1
-    #   The value at the location in memory referenced by
-    #   the value of the first item in array1.

@@ -15,6 +15,80 @@ class Command: Node, Variable {
     return "Command"
   }
   
+  override func value(code: CodeContainer) -> String {
+    guard children.count > 0 else { return "" }
+    
+    if let comp = children[0] as? Terminal {
+      
+      if case .id(let id) = comp.token {
+        switch id {
+        case "set":
+          code.append("memory[index] = " + children[2].value(code: code))
+        case "left":
+          let optional = children[1].value(code: code)
+          if optional == "" {
+            code.append("index = index - 1 if index > 0 else index")
+          } else {
+            code.append("index = (index - " + optional +
+              ") if (index > 0) else index")
+          }
+        case "right":
+          let optional = children[1].value(code: code)
+          if optional == "" {
+            code.append("index = (index + 1) if (index < 29999) else index")
+          } else {
+            code.append("index = (index + " + optional +
+              ") if (index < 29999) else index")
+          }
+        case "add":
+          let optional = children[1].value(code: code)
+          if optional == "" {
+            code.append("memory[index] += 1")
+          } else {
+            code.append("memory[index] += " + optional)
+          }
+        case "sub":
+          let optional = children[1].value(code: code)
+          if optional == "" {
+            code.append("memory[index] -= 1")
+          } else {
+            code.append("memory[index] -= " + optional)
+          }
+        case "printA":
+          code.append("print(chr(memory[index]))")
+        case "printI":
+          code.append("print(memory[index])")
+        case "inputA":
+          code.append("memory[index] = ord(input(\"Type a character: \")[0])")
+        case "inputI":
+          code.append("memory[index] = int(input(\"Type an integer: \")[0])")
+        case "make":
+          code.append("malloc(\"" + children[2].value(code: code) + "\", " +
+            children[4].value(code: code) + ")")
+        case "remove":
+          code.append("free(\"" + children[2].value(code: code) + "\"")
+        case "jump":
+          code.append("index = " + children[1].value(code: code))
+        case "while":
+          code.append("while (" + children[1].value(code: code) + " != 0):")
+          code.indent()
+          _ = children[3].value(code: code)
+          _ = children[1].value(code: code) // re-prime the while loop
+          code.unindent()
+        case "if":
+          code.append("if (" + children[1].value(code: code) + " != 0):")
+          code.indent()
+          _ = children[3].value(code: code)
+        case "die":
+          code.append("sys.exit()")
+        default:
+          return ""
+        }
+      }
+    }
+    return ""
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case let .id(string) where string == "set":
@@ -103,7 +177,7 @@ class Command: Node, Variable {
   private func rule11() {
     children += [Terminal(token: .id("remove")),
                  Terminal(token: .parenthesisOpen),
-                 Expression(),
+                 Identifier(),
                  Terminal(token: .parenthesisClose)]
   }
   

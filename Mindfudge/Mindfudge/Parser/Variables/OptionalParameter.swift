@@ -14,6 +14,11 @@ class OptionalParameter: Node, Variable {
     return "OptionalParameter"
   }
   
+  override func value(code: CodeContainer) -> String {
+    guard children.count > 0 else { return ""}
+    return children[0].value(code: code)
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case .parenthesisOpen:

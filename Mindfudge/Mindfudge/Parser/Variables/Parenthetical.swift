@@ -14,6 +14,10 @@ class Parenthetical: Node, Variable {
     return "Parenthetical"
   }
   
+  override func value(code: CodeContainer) -> String {
+    return children[1].value(code: code)
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
     case .parenthesisOpen:

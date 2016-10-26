@@ -14,13 +14,65 @@ class Returnable: Node, Variable {
     return "Returnable"
   }
   
+  override func value(code: CodeContainer) -> String {
+    guard children.count > 0 else { return "" }
+    
+    let comp = children[0] as! Terminal
+    
+    if case .id(let id) = comp.token {
+      switch id {
+      case "get":
+        let v = code.pushVar()
+        code.append(v + " = " + children[1].value(code: code))
+        code.popVar()
+        return v
+      case "not":
+        let vnot = children[1].value(code: code)
+        code.append(vnot + " = 0 if (" + vnot + " != 0) else 1 #not")
+        return vnot
+      case "eq", "or", "gt", "ge", "lt", "le":
+        let v1 = children[2].value(code: code)
+        let va = code.pushVar()
+        code.append(va + " = " + v1)
+        let v2 = children[4].value(code: code)
+        let vb = code.pushVar()
+        code.append(vb + " = " + v2)
+        code.popVar()
+        code.popVar()
+        
+        switch id {
+        case "eq":
+          code.append(va + " = 1 if (" + va + " == " + vb + ") else 0 #eq")
+        case "or":
+          code.append(va + " = 1 if ((" + va + " == 1) or (" + vb + " == 1)) else 0 #or")
+        case "gt":
+          code.append(va + " = 1 if (" + va + " > " + vb + ") else 0 #gt")
+        case "ge":
+          code.append(va + " = 1 if (" + va + " >= " + vb + ") else 0 #ge")
+        case "lt":
+          code.append(va + " = 1 if (" + va + " < " + vb + ") else 0 #lt")
+        case "le":
+          code.append(va + " = 1 if (" + va + " <= " + vb + ") else 0 #le")
+        default:
+          break
+        }
+        
+        return va
+        
+      default:
+        break
+      }
+    }
+    return "error in returnable"
+  }
+  
   func loadChildren(fromLookAhead token: Token) throws {
     switch token {
-    case let .id(string) where string == "get":
-      rule1()
+    case let .id(string) where string == "get" || string == "not":
+      rule1(singleOp: string)
     case let .id(string) where
       string == "eq" || string == "gt" || string == "ge" || string == "lt"
-      || string == "le":
+        || string == "le" || string == "or":
       ruleBuiltInFunction(id: string)
     default:
       throw SyntaxError.invalidToken(found: token)
@@ -28,11 +80,14 @@ class Returnable: Node, Variable {
   }
   
   // <returnable> ::= 'get' <parenthetical>)
-  private func rule1() {
-    children += [Terminal(token: .id("get")), Parenthetical()]
+  /// <returnable> ::= 'not' '(' <expression> ')'
+  private func rule1(singleOp: String) {
+    children += [Terminal(token: .id(singleOp)), Parenthetical()]
   }
   
+  
   /// <returnable> ::= 'eq' '(' <expression> ',' <expression> ')'
+  /// <returnable> ::= 'or' '(' <expression> ',' <expression> ')'
   /// <returnable> ::= 'gt' '(' <expression> ',' <expression> ')'
   /// <returnable> ::= 'ge' '(' <expression> ',' <expression> ')'
   /// <returnable> ::= 'lt' '(' <expression> ',' <expression> ')'
