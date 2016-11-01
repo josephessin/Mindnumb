@@ -17,7 +17,7 @@
 		CA5F0BF01D8CA93200285200 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BEF1D8CA93200285200 /* Token.swift */; };
 		CA5F0BF21D8CAC0600285200 /* LexicalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BF11D8CAC0600285200 /* LexicalError.swift */; };
 		CA5F0BF41D8CB0CE00285200 /* MindfudgeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */; };
-		CA5F0BF61D8CB24700285200 /* code.txt in Resources */ = {isa = PBXBuildFile; fileRef = CA5F0BF51D8CB24700285200 /* code.txt */; };
+		CA5F0BF61D8CB24700285200 /* palindromes.mf in Resources */ = {isa = PBXBuildFile; fileRef = CA5F0BF51D8CB24700285200 /* palindromes.mf */; };
 		CABD4A661DBEADF100D63365 /* CodeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD4A651DBEADF100D63365 /* CodeContainer.swift */; };
 		CABD4A681DBF238A00D63365 /* code2.txt in Resources */ = {isa = PBXBuildFile; fileRef = CABD4A671DBF238A00D63365 /* code2.txt */; };
 		CACA37821DB407E7005D0119 /* SyntaxError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA37811DB407E7005D0119 /* SyntaxError.swift */; };
@@ -50,7 +50,7 @@
 		CA5F0BEF1D8CA93200285200 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		CA5F0BF11D8CAC0600285200 /* LexicalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LexicalError.swift; sourceTree = "<group>"; };
 		CA5F0BF31D8CB0CE00285200 /* MindfudgeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MindfudgeParser.swift; sourceTree = "<group>"; };
-		CA5F0BF51D8CB24700285200 /* code.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code.txt; sourceTree = "<group>"; };
+		CA5F0BF51D8CB24700285200 /* palindromes.mf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = palindromes.mf; sourceTree = "<group>"; };
 		CA89B35F1DB43CE9000F3B6A /* Mindfudge README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Mindfudge README.md"; sourceTree = SOURCE_ROOT; };
 		CABD4A651DBEADF100D63365 /* CodeContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeContainer.swift; sourceTree = "<group>"; };
 		CABD4A671DBF238A00D63365 /* code2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code2.txt; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 				CA423BF71D8B6E1F0058309E /* Assets.xcassets */,
 				CA423BF91D8B6E1F0058309E /* Main.storyboard */,
 				CA423BFC1D8B6E1F0058309E /* Info.plist */,
-				CA5F0BF51D8CB24700285200 /* code.txt */,
+				CA5F0BF51D8CB24700285200 /* palindromes.mf */,
 				CABD4A671DBF238A00D63365 /* code2.txt */,
 			);
 			path = Mindfudge;
@@ -231,7 +231,7 @@
 			files = (
 				CABD4A681DBF238A00D63365 /* code2.txt in Resources */,
 				CA423BF81D8B6E1F0058309E /* Assets.xcassets in Resources */,
-				CA5F0BF61D8CB24700285200 /* code.txt in Resources */,
+				CA5F0BF61D8CB24700285200 /* palindromes.mf in Resources */,
 				CA423BFB1D8B6E1F0058309E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -124,6 +124,13 @@ allowing for operators in expressions.
 * `eq(a, b)` is a built-in function for use in expressions that
   compares two integer expressions. If `a` equals `b`, it
   returns 1, otherwise it returns 0.
+
+* `not(a)` is a built-in function for use in expressions that
+  negates the given value. If a is non-zero, not(a) returns 0,
+  if it is zero, it returns 1.
+
+* `or(a, b)` is a built-in function for use in expressions that
+  returns 1 if either a or b is nonzero, otherwise it returns 0.
   
 * `gt(a, b)` is a built-in function for use in expressions that
   compares two integer expressions. If `a > b`, it
@@ -253,11 +260,14 @@ Note that `program` **is our start variable**.
 ### Expressions
 
 	<returnable> ::= 'get' <parenthetical>
+               ::= 'not' <parenthetical>
 	             ::= 'eq' '(' <expression> ',' <expression> ')'
+               ::= 'or' '(' <expression> ',' <expression> ')'
 	             ::= 'gt' '(' <expression> ',' <expression> ')'
 	             ::= 'ge' '(' <expression> ',' <expression> ')'
 	             ::= 'lt' '(' <expression> ',' <expression> ')'
 	             ::= 'le' '(' <expression> ',' <expression> ')'
+               
 	             
 	<value> ::= <returnable>
 	        ::= <integer>
@@ -297,10 +307,10 @@ terminal is equal to the terminal itself.
 	FIRST(<command>) = {'set', 'left', 'right', 'add', 'sub', 'printA',
 					           'printI', 'inputA', 'inputI', 'make', 'remove',
                      'jump', 'while', 'if', 'die'}
-	FIRST(<returnable>) = {'get', 'eq', 'gt', 'ge', 'lt', 'le'}
+	FIRST(<returnable>) = {'get', 'eq', 'not', 'or', 'gt', 'ge', 'lt', 'le'}
 	FIRST(<value>)
 		= FIRST(<returnable>) + {<integer>, <id>}
-		= {'get', 'eq', 'gt', 'ge', 'lt', 'le',
+		= {'get', 'eq', 'not', 'or', 'gt', 'ge', 'lt', 'le',
 		  <integer>, <id>}
 	FIRST(<optionalParameter>)
 		= FIRST(<parenthetical>)
@@ -309,7 +319,7 @@ terminal is equal to the terminal itself.
 	FIRST(<operation>) = {'+'}
 	FIRST(<expression>)
 		= FIRST(<value>) + FIRST(<parenthetical>)
-		= {'get', 'eq', 'gt', 'ge', 'lt', 'le', <integer>,
+		= {'get', 'eq', 'not', 'or', 'gt', 'ge', 'lt', 'le', <integer>,
 		   <id>, '('}
 
 ### FOLLOW Table
@@ -360,14 +370,16 @@ The parser begins with an initial application of the start variable, `<program>`
 		= FOLLOW(<command>)
 		= {<newline>}
 	PREDICT(<returnable> ::= 'get' <parenthetical>) = 'get'
+  PREDICT(<returnable> ::= 'not' <parenthetical>) = 'not'
 	PREDICT(<returnable> ::= 'eq' '(' <expression> ',' <expression> ')') = {'eq'}
+  PREDICT(<returnable> ::= 'or' '(' <expression> ',' <expression> ')') = {'or'}
 	PREDICT(<returnable> ::= 'gt' '(' <expression> ',' <expression> ')') = {'gt'}
 	PREDICT(<returnable> ::= 'ge' '(' <expression> ',' <expression> ')') = {'ge'}
 	PREDICT(<returnable> ::= 'lt' '(' <expression> ',' <expression> ')') = {'lt'}
 	PREDICT(<returnable> ::= 'le' '(' <expression> ',' <expression> ')') = {'le'}
 	PREDICT(<value> ::= <returnable>)
 		= FIRST(<returnable>)
-		= {'get', 'eq', 'gt', 'ge', 'lt', 'le'}
+		= {'get', 'eq', 'or', 'not', 'gt', 'ge', 'lt', 'le'}
 	PREDICT(<value> ::= <integer>) = {<integer>}
 	PREDICT(<value> ::= <id>) = {<id>}
 	PREDICT(<optionalParameter> ::= <parenthetical>)
@@ -403,31 +415,3 @@ Size
 Determine where the variable should live in memory
 Allocate data
 Linked list of free space
-
-Make the python code generate a symbol table.
-
-
-<returnable> can generate any number of statements as needed to make the
-variables equal what they want
-
-## Usage Notes
-Meaning of operations:
-
-| Function | Returns                                         |
-| -------- | ----------------------------------------------- |
-| get(x)   | Returns the value at the specified location     |
-| eq(a,b)  | Returns true if a is equal to b                 |
-| gt(a,b)  | Returns true if a is greater than b             |
-| ge(a,b)  | Returns true if a is greater than or equal to b |
-| lt(a,b)  | Returns true if a is less than b                |
-| le(a,b)  | Returns true if a is less than or equal to b    |
-
-Note: `get(x)` returns the starting index of an array if given
-an identifier, and returns the value of the location in 
-memory if given an integer.
-
-Mindnumb converts the original comparison commands to be
-built in functions that return zero or one, allowing them to be
-used in expressions. It also adds support for *less-than* (`lt()`)
-and *less-than-or-equal-to* (`le()`), which was not possible in the original
-Mindfudge specification.

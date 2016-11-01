@@ -15,7 +15,7 @@ class Program: Node, Variable {
   }
 
   override func value(code: CodeContainer) -> String {
-
+    code.append("import sys")
     code.append("def main():")
     code.indent()
     code.append("index = 0")

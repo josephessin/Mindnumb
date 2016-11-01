@@ -79,6 +79,7 @@ class Command: Node, Variable {
           code.append("if (" + children[1].value(code: code) + " != 0):")
           code.indent()
           _ = children[3].value(code: code)
+          code.unindent()
         case "die":
           code.append("sys.exit()")
         default:
