@@ -401,3 +401,146 @@ The parser begins with an initial application of the start variable, `<program>`
 	PREDICT(<expression> :: = <parenthetical>)
 		= FIRST(<parenthetical>)
 		= {'('}
+		
+## Examples
+
+### Palindrome Validation
+
+In the spirit of computer science, here is a simple palindrome validation program, written in the Mindnumb flavor of Mindfudge:
+
+    #  File: palindromes.mf
+    #  Author: Joseph Essin
+    #  Date: October 2016
+    #  Title: Even-length Palindrome Validation
+    #  Description:
+    #    User inputs a sequence of 'a' and 'b' one at a time.
+    #    User inputs any other character to end the sequence.
+    #    Program prints out the received characters and
+    #    displays "Y" if it is a palindrome and "N" if validation fails.
+
+    # 'A' = 65
+    # 'B' = 66
+    # 'a' = 97
+    # 'b' = 98
+    # 'Y' = 89
+    # 'N' = 78
+
+    inputA
+    while( or(eq(97+3+-3, indexValue), eq(98, indexValue)))
+      # While the user has inputted a or b.
+      # Note that 'a' = 61 and 'b' = 62. The above comparison works because
+      # eq(exp, exp) always returns 1 if true, 0 if false.
+      right
+      inputA
+    end
+
+    # The last character obviously wasn't an 'a' or 'b', so put a zero at the
+    # end of the stream so we know when to stop:
+    set(0)
+
+    # Go all the way back to the start:
+    jump(0)
+
+    # If the first letter is not an a or a b, ditch
+    if(not(or(eq(1, eq(97, indexValue)), eq(1, eq(98, indexValue)))))
+      die
+    end
+
+    # Print out the sequence of 'a' and 'b' characters entered by the user
+    #while( or(eq(1, eq(97, indexValue)), eq(1, eq(98, indexValue))) )
+    #  printA
+    #  right
+    #end
+
+    # Go all the way back to the start again:
+    jump(0)
+
+    # Now, see if it's a palindrome:
+    while(1)
+
+      # Look at first character:
+      if( eq(indexValue, 97) )
+        # Found 'a', replace with 'A'
+        set(65)
+
+        right
+
+        # Go to the end of the input:
+        while( or(eq(indexValue, 97), eq(indexValue, 98)) )
+          right
+        end
+
+        # Go back, we overshot by one:
+        left
+
+        # If we found anything other than 'a', we fail:
+        if( not(eq(indexValue, 97)) )
+          set(78)
+          printA
+          die
+        end
+
+        # We should be looking at a lowercase 'a' by now.
+        # Replace with 'A'
+        set(65)
+
+        # Go back to the start
+        jump(0)
+
+        # While we are finding capital letters, go right:
+        while( or(eq(indexValue, 65), eq(indexValue, 66)) )
+          right
+        end
+
+        if ( eq(indexValue, 0) )
+          # If we found 0, we have succeeded!
+          set(89)
+          printA
+          die
+        end
+
+      end # 'a' found
+
+      if( eq(indexValue, 98) )
+        # Found 'b', replace with 'B'
+        set(66)
+
+        right
+
+        # Go to the end of the input:
+        while( or(eq(indexValue, 97), eq(indexValue, 98)) )
+          right
+        end
+
+        # Go back, we overshot by one:
+        left
+
+        # If we found anything other than 'b', we fail:
+        if( not(eq(indexValue, 98)) )
+          set(78)
+          printA
+          die
+        end
+
+        # We should be looking at a lowercase 'b' by now.
+        # Replace with 'B'
+        set(66)
+
+        # Go back to the start
+        jump(0)
+
+        # While we are finding capital letters, go right:
+        while( or(eq(indexValue, 65), eq(indexValue, 66)) )
+          right
+        end
+
+        if ( eq(indexValue, 0) )
+          # If we found 0, we have succeeded!
+          set(89)
+          printA
+          die
+        end
+
+      end # 'b' found
+
+    end
