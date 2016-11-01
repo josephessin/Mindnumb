@@ -401,17 +401,3 @@ The parser begins with an initial application of the start variable, `<program>`
 	PREDICT(<expression> :: = <parenthetical>)
 		= FIRST(<parenthetical>)
 		= {'('}
-		
-## Symbol Table
-
-* Generate symbol list while constructing a tree.
-* Keep track of integers and id's.
-* Allocate space in an array
-* Update symbol table with location
-
-Symbol table should track:
-Location in 30,000 slots
-Size
-Determine where the variable should live in memory
-Allocate data
-Linked list of free space
