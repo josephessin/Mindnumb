@@ -370,9 +370,9 @@ The parser begins with an initial application of the start variable, `<program>`
 		= FOLLOW(<command>)
 		= {<newline>}
 	PREDICT(<returnable> ::= 'get' <parenthetical>) = 'get'
-  PREDICT(<returnable> ::= 'not' <parenthetical>) = 'not'
+    PREDICT(<returnable> ::= 'not' <parenthetical>) = 'not'
 	PREDICT(<returnable> ::= 'eq' '(' <expression> ',' <expression> ')') = {'eq'}
-  PREDICT(<returnable> ::= 'or' '(' <expression> ',' <expression> ')') = {'or'}
+    PREDICT(<returnable> ::= 'or' '(' <expression> ',' <expression> ')') = {'or'}
 	PREDICT(<returnable> ::= 'gt' '(' <expression> ',' <expression> ')') = {'gt'}
 	PREDICT(<returnable> ::= 'ge' '(' <expression> ',' <expression> ')') = {'ge'}
 	PREDICT(<returnable> ::= 'lt' '(' <expression> ',' <expression> ')') = {'lt'}
