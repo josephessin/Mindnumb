@@ -1,7 +1,7 @@
 # Mindnumb
 
 Mindnumb is an implementation of the Mindfudge programming language
-designed by Dr. Aaron Block, Ph.D. which is an open specification
+designed by Dr. Aaron Block, Ph.D., which is an open specification
 designed for students learning compiler design. Mindfudge is heavily
 influenced by [a certain other programming language](http://www.muppetlabs.com/~breadbox/bf/).
 
