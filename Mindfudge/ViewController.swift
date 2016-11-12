@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     super.viewDidAppear()
     
     // Load our Mindfudge Code:
-    let path = Bundle.main.path(forResource: "palindromes", ofType: "mf")!
+    let path = Bundle.main.path(forResource: "arrays", ofType: "mf")!
     let string = try! String(contentsOfFile: path)
     
     let parser = MindfudgeParser(code: string)

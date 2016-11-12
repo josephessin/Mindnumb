@@ -58,5 +58,7 @@ class Block: Node, Variable {
   }
   
   /// <block> ::= !
-  private func rule2() { }
+  private func rule2() {
+    
+  }
 }

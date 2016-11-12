@@ -66,7 +66,7 @@ class Command: Node, Variable {
           code.append("malloc(\"" + children[2].value(code: code) + "\", " +
             children[4].value(code: code) + ")")
         case "remove":
-          code.append("free(\"" + children[2].value(code: code) + "\"")
+          code.append("free(\"" + children[2].value(code: code) + "\")")
         case "jump":
           code.append("index = " + children[1].value(code: code))
         case "while":

@@ -1,0 +1,24 @@
+#  File: Mindfudge Arrays
+#  Author: Joseph Essin
+#  Date: November 2016
+#  Title: Array Example
+#  Description:
+#    Test the capabilities of Mindfudge's memory management.
+
+make(bob, 10)
+set(bob) # Set the address of bob to the current value
+printI # Print out the current value.
+
+make(larry, 20)
+set(larry)
+printI
+
+make(jerry, 15)
+set(jerry)
+printI
+
+remove(bob)
+
+make(jack, 5)
+set(jack)
+printI

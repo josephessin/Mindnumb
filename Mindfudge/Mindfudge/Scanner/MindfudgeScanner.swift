@@ -33,7 +33,7 @@ class MindfudgeScanner {
       char = get()
       if char == nil { return nil }
     }
-    
+ 
     if isLineFeed(char!) {
       // Gobble up any following line feeds:
       while isLineFeed(char!) {
@@ -94,7 +94,7 @@ class MindfudgeScanner {
         char = get()
         if char == nil { break }
       }
-
+      unget()
       return Token.comment(buffer)
     } else {
       if char! != 0 {

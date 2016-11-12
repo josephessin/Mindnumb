@@ -28,6 +28,11 @@ class Program: Node, Variable {
     code.unindent()
     _ = children[0].value(code: code)
     code.unindent()
+    // Load the code for the runtime and paste it below:
+    let path = Bundle.main.path(forResource: "Runtime", ofType: "py")!
+    let string = try! String(contentsOfFile: path)
+    code.append(string)
+    
     code.append("if __name__ == \"__main__\":")
     code.indent()
     code.append("main()")

@@ -30,7 +30,7 @@ class Terminal: Node {
       }else {
         // We need to use the python runtime library to find the address of the
         // specified array identifier
-        return "address(\"\(string)\")"
+        return string
       }
     case .integer(let string):
       return string

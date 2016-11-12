@@ -18,6 +18,10 @@ class Value: Node, Variable {
                                           "lt", "le"]
   
   override func value(code: CodeContainer) -> String {
+    let terminal = children[0] as! Terminal
+    if case .id(let str) = terminal.token {
+      return "address(\"" + str + "\")"
+    }
     return children[0].value(code: code)
   }
   

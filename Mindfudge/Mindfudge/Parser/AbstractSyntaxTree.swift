@@ -73,11 +73,15 @@ class AbstractSyntaxTree {
           // If it's a terminal, check it with our input stream.
           let token = terminal.token
           
-          Swift.print("Encountered terminal: " + token.description)
+          Swift.print("Encountered terminal in tree: " + token.description)
+          Swift.print("Comparing with actual token: " + tokens[index].description)
           
           // Compare the predicted token with the current token.
           // If they match, move the index up by one.
           switch (token, tokens[index]) {
+          case (.newline, .newline):
+            Swift.print("*Matched* newline")
+            index += 1
           case (.id(let a), .id(let b)) where a == b:
             Swift.print("*Matched* identifier")
             index += 1
@@ -90,9 +94,6 @@ class AbstractSyntaxTree {
           case (.eof, .eof):
             Swift.print("*Matched* eof")
             index += 1
-          case (.newline, .newline):
-            Swift.print("*Matched* newline")
-            index += 1
           case (.parenthesisOpen, .parenthesisOpen):
             Swift.print("*Matched* (")
             index += 1
@@ -103,6 +104,10 @@ class AbstractSyntaxTree {
             Swift.print("*Matched* comma")
             index += 1
           default:
+            print()
+            NSLog("Token in file: " + tokens[index].description)
+            NSLog("Predicted token: " + token.description)
+            NSLog("Last token in file: " + tokens[index - 1].description)
             throw SyntaxError.invalidToken(found: token)
           }
         } else if child is Variable {
@@ -112,6 +117,7 @@ class AbstractSyntaxTree {
           // If that worked, enter recursion:
           Swift.print("Entering: " + variable.description)
           try recursiveParse(node: child)
+          Swift.print("Going back to: " + node.description)
         }
       }
     } catch let exception {
